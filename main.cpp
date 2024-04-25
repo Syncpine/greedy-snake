@@ -1,9 +1,16 @@
 #include <iostream>
+
+#include "interface.h"
+
 using namespace std;
+
 
 int main()
 {
-    std::cout << "Hello World." << std::endl;
+    ShowWall();
+
+    // todo
+
     return 0;
 }
 
