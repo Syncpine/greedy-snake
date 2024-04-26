@@ -11,15 +11,14 @@ int main()
 {
     InitSnake(snake);
 
-    std::cout << std::endl << std::endl;
-
     ShowWall();
 
     ShowSnake(snake);
 
-    // snake.PrintSnake();
-
     // todo
+
+    gotoxy(0, WALL_HEIGHT + 2);
+    snake.PrintSnake();
 
     snake.DeInit();
 
