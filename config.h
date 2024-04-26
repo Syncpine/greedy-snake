@@ -5,3 +5,4 @@
 
 #define WALL_ICON '#'
 
+#define SNAKE_ICON 'o'

@@ -4,6 +4,7 @@
 #include <Windows.h>
 
 #include "config.h"
+#include "snake.h"
 
 using namespace std;
 
@@ -12,6 +13,18 @@ void gotoxy(int x, int y)
 {
     COORD pos = { x,y };
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
+void ShowSnake(const Snake& snake)
+{
+    auto snakeBody = snake.body.begin();
+
+    while (snake.body.end() != snakeBody)
+    {
+        gotoxy(snakeBody->xx, snakeBody->yy);
+        printf("%c", SNAKE_ICON);
+        ++snakeBody;
+    }
 }
 
 void ShowWall()
