@@ -10,6 +10,19 @@ public:
     Point position;
 
 public:
+    Food() { Init(); }
+
+    void Init()
+    {
+        this->position.xx = -1;
+        this->position.yy = -1;
+    }
+
+    bool IsInit()
+    {
+        return -1 == this->position.xx && -1 == this->position.yy;
+    }
+
     void Create()
     {
         this->position.xx = rand() % (WALL_WIDTH - 1) + 1;

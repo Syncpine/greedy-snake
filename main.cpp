@@ -25,7 +25,11 @@ int main()
 
         ShowSnake(snake);
 
-        food.Create();
+        if (food.IsInit())
+        {
+            food.Create();
+        }
+
         ShowFood(food);
 
         gotoxy(0, WALL_HEIGHT + 2);
@@ -75,6 +79,8 @@ int main()
         }
 
         snake.MoveSnake(direction);
+
+        snake.TryEatFood(food);
 
         ch = '\0';
     }

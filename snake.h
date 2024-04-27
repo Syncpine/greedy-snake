@@ -5,12 +5,15 @@
 #include "point.h"
 #include "def.h"
 #include "opt.h"
+#include "food.h"
 
 struct Snake
 {
 public:
     std::list<Point> body;
     Direction direction;
+
+    std::list<Point> preTail;
 
 public:
     void MoveSnake(Direction& moveDirection)
@@ -20,6 +23,8 @@ public:
         auto pre_itor = this->body.end();
         --pre_itor;
         auto cur_itor = this->body.end();
+
+        preTail.push_back(Point(pre_itor->xx, pre_itor->yy));
 
         switch (moveDirection)
         {
@@ -86,6 +91,25 @@ public:
         this->direction = moveDirection;
     }
 
+    void TryEatFood(Food& food)
+    {
+        Point snakeHead = *(this->body.begin());
+
+        if (snakeHead == food.position)
+        {
+            for (auto itor : this->preTail)
+            {
+                this->body.push_back(itor);
+            }
+
+            food.Init();
+        }
+        else
+        {
+            this->preTail.clear();
+        }
+    }
+
     void PrintSnake() const
     {
         std::cout << "Direction: " << GetDirectionStr(this->direction) << std::endl << std::endl;
@@ -102,6 +126,7 @@ public:
     {
         this->body.clear();
         direction = Right;
+        this->preTail.clear();
     }
 
 private:
@@ -134,5 +159,6 @@ void InitSnake(Snake& snake)
     snake.body.push_back({ 10,5 });
 
     snake.direction = Right;
+    snake.preTail.clear();
 }
 
