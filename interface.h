@@ -33,6 +33,9 @@ void ShowSnake(const Snake& snake)
 {
     auto snakeBody = snake.body.begin();
 
+    printxy(snakeBody->xx, snakeBody->yy, SNAKE_HEAD_ICON);
+    ++snakeBody;
+
     while (snake.body.end() != snakeBody)
     {
         printxy(snakeBody->xx, snakeBody->yy, SNAKE_ICON);

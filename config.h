@@ -5,6 +5,7 @@
 
 #define WALL_ICON '#'
 
+#define SNAKE_HEAD_ICON '@'
 #define SNAKE_ICON 'o'
 
 #define FOOD_ICON '*'
