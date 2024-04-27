@@ -56,6 +56,13 @@ int main()
                 direction = Down;
             }
             break;
+            case 'q':
+            case 'Q':
+            {
+                std::cout << "Game over." << std::endl << std::endl;
+                return 0;
+            }
+            break;
             default:
                 break;
             }
