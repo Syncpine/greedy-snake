@@ -9,16 +9,62 @@ Snake snake;
 
 int main()
 {
+    char ch = '\0';
+    Direction direction = Right;
+
     InitSnake(snake);
 
-    ShowWall();
+    while (true)
+    {
+        system("CLS");
 
-    ShowSnake(snake);
+        ShowWall();
 
-    // todo
+        ShowSnake(snake);
 
-    gotoxy(0, WALL_HEIGHT + 2);
-    snake.PrintSnake();
+        gotoxy(0, WALL_HEIGHT + 2);
+        snake.PrintSnake();
+
+        while ('\0' == ch)
+        {
+            std::cout << "Please input move direction:" << std::endl;
+            cin >> ch;
+            std::cout << std::endl;
+            switch (ch)
+            {
+            case 'a':
+            case 'A':
+            {
+                direction = Left;
+            }
+            break;
+            case 'w':
+            case 'W':
+            {
+                direction = Up;
+            }
+            break;
+            case 'd':
+            case 'D':
+            {
+                direction = Right;
+            }
+            break;
+            case 's':
+            case 'S':
+            {
+                direction = Down;
+            }
+            break;
+            default:
+                break;
+            }
+        }
+
+        snake.MoveSnake(direction);
+
+        ch = '\0';
+    }
 
     snake.DeInit();
 
