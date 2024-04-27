@@ -16,7 +16,7 @@ public:
     std::list<Point> preTail;
 
 public:
-    void MoveSnake(Direction& moveDirection)
+    bool MoveSnake(Direction& moveDirection)
     {
         CorrectDirection(moveDirection);
 
@@ -39,6 +39,11 @@ public:
             }
 
             --(pre_itor->xx);
+
+            if (0 == pre_itor->xx)
+            {
+                return false;
+            }
         }
         break;
 
@@ -53,6 +58,10 @@ public:
             }
 
             --(pre_itor->yy);
+            if (0 == pre_itor->yy)
+            {
+                return false;
+            }
         }
         break;
 
@@ -67,6 +76,10 @@ public:
             }
 
             ++(pre_itor->xx);
+            if (WALL_WIDTH == pre_itor->xx)
+            {
+                return false;
+            }
         }
         break;
 
@@ -81,14 +94,19 @@ public:
             }
 
             ++(pre_itor->yy);
+            if (WALL_HEIGHT == pre_itor->yy)
+            {
+                return false;
+            }
         }
         break;
 
         default:
-            return;
+            return false;
         }
 
         this->direction = moveDirection;
+        return true;
     }
 
     void TryEatFood(Food& food)

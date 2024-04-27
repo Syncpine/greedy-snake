@@ -12,6 +12,7 @@ int main()
 {
     char ch = '\0';
     Direction direction = Right;
+    bool flag = true;
 
     srand(time(0));
 
@@ -34,6 +35,12 @@ int main()
 
         gotoxy(0, WALL_HEIGHT + 2);
         snake.PrintSnake();
+
+        if (!flag)
+        {
+            std::cout << "Failed, game over!" << std::endl << std::endl;
+            return 0;
+        }
 
         while ('\0' == ch)
         {
@@ -78,7 +85,7 @@ int main()
             }
         }
 
-        snake.MoveSnake(direction);
+        flag = snake.MoveSnake(direction);
 
         snake.TryEatFood(food);
 
