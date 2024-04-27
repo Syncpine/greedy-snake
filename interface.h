@@ -5,6 +5,7 @@
 
 #include "config.h"
 #include "snake.h"
+#include "food.h"
 
 using namespace std;
 
@@ -37,6 +38,11 @@ void ShowSnake(const Snake& snake)
         printxy(snakeBody->xx, snakeBody->yy, SNAKE_ICON);
         ++snakeBody;
     }
+}
+
+void ShowFood(const Food& food)
+{
+    printxy(food.position.xx, food.position.yy, FOOD_ICON);
 }
 
 void ShowWall()

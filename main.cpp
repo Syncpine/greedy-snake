@@ -6,11 +6,14 @@ using namespace std;
 
 
 Snake snake;
+Food food;
 
 int main()
 {
     char ch = '\0';
     Direction direction = Right;
+
+    srand(time(0));
 
     InitSnake(snake);
 
@@ -21,6 +24,9 @@ int main()
         ShowWall();
 
         ShowSnake(snake);
+
+        food.Create();
+        ShowFood(food);
 
         gotoxy(0, WALL_HEIGHT + 2);
         snake.PrintSnake();
