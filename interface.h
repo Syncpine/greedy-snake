@@ -15,14 +15,26 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
+void printxy(int x, int y, char symbol)
+{
+    gotoxy(x, y);
+
+    printf("%c", symbol);
+}
+
+void printxy(int x, int y, string str)
+{
+    gotoxy(x, y);
+    printf("%s", str.c_str());
+}
+
 void ShowSnake(const Snake& snake)
 {
     auto snakeBody = snake.body.begin();
 
     while (snake.body.end() != snakeBody)
     {
-        gotoxy(snakeBody->xx, snakeBody->yy);
-        printf("%c", SNAKE_ICON);
+        printxy(snakeBody->xx, snakeBody->yy, SNAKE_ICON);
         ++snakeBody;
     }
 }
@@ -34,29 +46,25 @@ void ShowWall()
     // WALL->UP
     for (ii = 0; ii <= WALL_WIDTH; ++ii)
     {
-        gotoxy(ii, 0);
-        printf("%c", WALL_ICON);
+        printxy(ii, 0, WALL_ICON);
     }
 
     // WALL->DOWN
     for (ii = 0; ii <= WALL_WIDTH; ++ii)
     {
-        gotoxy(ii, WALL_HEIGHT);
-        printf("%c", WALL_ICON);
+        printxy(ii, WALL_HEIGHT, WALL_ICON);
     }
 
     // WALL->LEFT
     for (jj = 0; jj <= WALL_HEIGHT; ++jj)
     {
-        gotoxy(0, jj);
-        printf("%c", WALL_ICON);
+        printxy(0, jj, WALL_ICON);
     }
 
     // WALL->RIGHT
     for (jj = 0; jj <= WALL_HEIGHT; ++jj)
     {
-        gotoxy(WALL_WIDTH, jj);
-        printf("%c", WALL_ICON);
+        printxy(WALL_WIDTH, jj, WALL_ICON);
     }
 }
 
