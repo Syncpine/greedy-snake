@@ -34,7 +34,7 @@ int main()
         ShowFood(food);
 
         gotoxy(0, WALL_HEIGHT + 2);
-        snake.PrintSnake();
+        // snake.PrintSnake();
 
         if (!flag)
         {
