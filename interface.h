@@ -33,14 +33,13 @@ void ShowSnake(const Snake& snake)
 {
     auto snakeBody = snake.body.begin();
 
-    printxy(snakeBody->xx, snakeBody->yy, SNAKE_HEAD_ICON);
-    ++snakeBody;
-
     while (snake.body.end() != snakeBody)
     {
         printxy(snakeBody->xx, snakeBody->yy, SNAKE_ICON);
         ++snakeBody;
     }
+
+    printxy((snake.body.begin())->xx, (snake.body.begin())->yy, SNAKE_HEAD_ICON);
 }
 
 void ShowFood(const Food& food)

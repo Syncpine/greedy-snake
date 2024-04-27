@@ -105,6 +105,17 @@ public:
             return false;
         }
 
+        auto itor = this->body.begin();
+        ++itor;
+        while (this->body.end() != itor)
+        {
+            if (*(this->body.begin()) == (*itor))
+            {
+                return false;
+            }
+            ++itor;
+        }
+
         this->direction = moveDirection;
         return true;
     }
